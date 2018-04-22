@@ -43,6 +43,7 @@
             this.bornDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnFilterName = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -51,6 +52,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnFilterName);
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.filter);
@@ -64,7 +66,7 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(850, 13);
+            this.btnAdd.Location = new System.Drawing.Point(738, 12);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
@@ -75,7 +77,7 @@
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(769, 13);
+            this.btnSearch.Location = new System.Drawing.Point(657, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 2;
@@ -90,7 +92,7 @@
             this.filter.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.filter.Location = new System.Drawing.Point(53, 15);
             this.filter.Name = "filter";
-            this.filter.Size = new System.Drawing.Size(710, 20);
+            this.filter.Size = new System.Drawing.Size(598, 20);
             this.filter.TabIndex = 1;
             // 
             // label1
@@ -115,6 +117,7 @@
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToOrderColumns = true;
             this.dataGridView.AutoGenerateColumns = false;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -180,6 +183,17 @@
             // 
             this.employeeBindingSource.DataSource = typeof(EmployeesTest.Data.Models.Employee);
             // 
+            // btnFilterName
+            // 
+            this.btnFilterName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFilterName.Location = new System.Drawing.Point(819, 12);
+            this.btnFilterName.Name = "btnFilterName";
+            this.btnFilterName.Size = new System.Drawing.Size(97, 23);
+            this.btnFilterName.TabIndex = 3;
+            this.btnFilterName.Text = "Order by Name";
+            this.btnFilterName.UseVisualStyleBackColor = true;
+            this.btnFilterName.Click += new System.EventHandler(this.btnFilterName_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,6 +230,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn bornDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource employeeBindingSource;
+        private System.Windows.Forms.Button btnFilterName;
     }
 }
 

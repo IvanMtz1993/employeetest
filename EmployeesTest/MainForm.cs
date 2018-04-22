@@ -24,7 +24,7 @@ namespace EmployeesTest
         {
             using (var unit = new UnitOfWork(new EmployeeContext()))
             {
-                employeeBindingSource.DataSource = unit.Employee.GetAll().OrderBy(x => x.BornDate);
+                employeeBindingSource.DataSource = unit.Employee.GetAll().OrderByDescending(x => x.BornDate);
             }
         }
 
@@ -68,6 +68,14 @@ namespace EmployeesTest
                 }
             }
             return sb.ToString();
+        }
+
+        private void btnFilterName_Click(object sender, EventArgs e)
+        {
+            using (var unit = new UnitOfWork(new EmployeeContext()))
+            {
+                employeeBindingSource.DataSource = unit.Employee.GetAll().OrderByDescending(x => x.Name);
+            }
         }
     }
 }

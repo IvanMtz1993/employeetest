@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Data.Entity.Core;
+using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using EmployeesTest.Data.Context;
@@ -19,6 +22,7 @@ namespace EmployeesTest
         {
             LoadComboBoxStatusFromEnum();
             employeeBindingSource.DataSource = new Employee();
+            
         }
 
         private void LoadComboBoxStatusFromEnum()
@@ -34,14 +38,24 @@ namespace EmployeesTest
                 MessageBox.Show(validate, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            using (var unit = new UnitOfWork(new EmployeeContext()))
+            
+            try
             {
-                var data = employeeBindingSource.Current as Employee;
-                unit.Employee.Add(data);
-                unit.SaveChanges();
-                Close();
+                using (var unit = new UnitOfWork(new EmployeeContext()))
+                {
+
+                    var data = employeeBindingSource.Current as Employee;
+                    data.BornDate = dtpDob.Value.Date;
+                    unit.Employee.Add(data);
+                    unit.SaveChanges();
+                    Close();
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("The RFC is already registered! Try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private string ValidateAll()
@@ -66,6 +80,7 @@ namespace EmployeesTest
             if (!txtRfc.Text.IsRfcValid())
             {
                 sb.AppendLine("RFC is not formatted correctly");
+                txtRfc.Text = "";
             }
 
             return sb.ToString();

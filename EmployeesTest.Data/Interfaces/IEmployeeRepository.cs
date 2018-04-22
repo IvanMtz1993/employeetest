@@ -4,5 +4,6 @@ namespace EmployeesTest.Data.Interfaces
 {
     public interface IEmployeeRepository : IGenericRepository<Employee>
     {
+
     }
 }

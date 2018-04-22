@@ -120,6 +120,7 @@
             // 
             // dtpDob
             // 
+            this.dtpDob.CustomFormat = "";
             this.dtpDob.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.employeeBindingSource, "BornDate", true));
             this.dtpDob.Location = new System.Drawing.Point(85, 99);
             this.dtpDob.Name = "dtpDob";
